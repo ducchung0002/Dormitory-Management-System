@@ -47,7 +47,7 @@ public class DormitoryAdminServlet extends HttpServlet {
                 break;
             case "update":
                 String idStr = req.getParameter("id");
-                Integer id = Integer.parseInt(idStr);
+                int id = Integer.parseInt(idStr);
                 username = req.getParameter("username");
                 password = req.getParameter("password");
                 name = req.getParameter("name");

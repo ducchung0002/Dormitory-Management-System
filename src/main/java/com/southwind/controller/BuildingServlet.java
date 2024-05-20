@@ -16,8 +16,8 @@ import java.io.IOException;
 @WebServlet("/building")
 public class BuildingServlet extends HttpServlet {
 
-    private BuildingService buildingService = new BuildingServiceImpl();
-    private DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
+    private final BuildingService buildingService = new BuildingServiceImpl();
+    private final DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,13 +45,13 @@ public class BuildingServlet extends HttpServlet {
                 String name = req.getParameter("name");
                 String introduction = req.getParameter("introduction");
                 String adminIdStr = req.getParameter("adminId");
-                Integer adminId = Integer.parseInt(adminIdStr);
+                int adminId = Integer.parseInt(adminIdStr);
                 this.buildingService.save(new Building(name, introduction, adminId));
                 resp.sendRedirect("/building?method=list");
                 break;
             case "update":
                 String idStr = req.getParameter("id");
-                Integer id = Integer.parseInt(idStr);
+                int id = Integer.parseInt(idStr);
                 name = req.getParameter("name");
                 introduction = req.getParameter("introduction");
                 adminIdStr = req.getParameter("adminId");

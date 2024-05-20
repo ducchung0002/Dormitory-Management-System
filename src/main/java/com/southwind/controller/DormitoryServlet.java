@@ -24,9 +24,9 @@ import java.util.Map;
 @WebServlet("/dormitory")
 public class DormitoryServlet extends HttpServlet {
 
-    private DormitoryService dormitoryService = new DormitoryServiceImpl();
-    private BuildingService buildingService = new BuildingServiceImpl();
-    private StudentService studentService = new StudentServiceImpl();
+    private final DormitoryService dormitoryService = new DormitoryServiceImpl();
+    private final BuildingService buildingService = new BuildingServiceImpl();
+    private final StudentService studentService = new StudentServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,7 +52,7 @@ public class DormitoryServlet extends HttpServlet {
                 break;
             case "save":
                 String buildingIdStr = req.getParameter("buildingId");
-                Integer buildingId = Integer.parseInt(buildingIdStr);
+                int buildingId = Integer.parseInt(buildingIdStr);
                 String name = req.getParameter("name");
                 String typeStr = req.getParameter("type");
                 Integer type = Integer.parseInt(typeStr);
@@ -62,7 +62,7 @@ public class DormitoryServlet extends HttpServlet {
                 break;
             case "update":
                 String idStr = req.getParameter("id");
-                Integer id = Integer.parseInt(idStr);
+                int id = Integer.parseInt(idStr);
                 name = req.getParameter("name");
                 telephone = req.getParameter("telephone");
                 this.dormitoryService.update(new Dormitory(id, name, telephone));
@@ -78,8 +78,8 @@ public class DormitoryServlet extends HttpServlet {
                 buildingIdStr = req.getParameter("buildingId");
                 buildingId = Integer.parseInt(buildingIdStr);
                 List<Dormitory> dormitoryList = this.dormitoryService.findByBuildingId(buildingId);
-                List<Student> studentList = this.studentService.findByDormitoryId(dormitoryList.get(0).getId());
-                Map<String,List> map = new HashMap<>();
+                List<Student> studentList = this.studentService.findByDormitoryId(dormitoryList.getFirst().getId());
+                Map<String, List> map = new HashMap<>();
                 map.put("dormitoryList",dormitoryList);
                 map.put("studentList",studentList);
 //                JSONArray jsonArray = JSONArray.fromObject(map);

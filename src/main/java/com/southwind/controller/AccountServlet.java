@@ -66,7 +66,7 @@ public class AccountServlet extends HttpServlet {
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case 0:
-                                //跳转到登录成功界面
+                                // Redirect to login success UI
                                 HttpSession session = req.getSession();
                                 session.setAttribute("dormitoryAdmin", dormitoryAdminDto.getDormitoryAdmin());
                                 resp.sendRedirect("/dormitoryadmin.jsp");

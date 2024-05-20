@@ -22,10 +22,10 @@ import java.util.List;
 @WebServlet("/absent")
 public class AbsentServlet extends HttpServlet {
 
-    private BuildingService buildingService = new BuildingServiceImpl();
-    private DormitoryService dormitoryService = new DormitoryServiceImpl();
-    private StudentService studentService = new StudentServiceImpl();
-    private AbsentService absentService = new AbsentServieImpl();
+    private final BuildingService buildingService = new BuildingServiceImpl();
+    private final DormitoryService dormitoryService = new DormitoryServiceImpl();
+    private final StudentService studentService = new StudentServiceImpl();
+    private final AbsentService absentService = new AbsentServieImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,8 +39,8 @@ public class AbsentServlet extends HttpServlet {
         switch (method){
             case "init":
                 List<Building> buildingList = this.buildingService.list();
-                List<Dormitory> dormitoryList = this.dormitoryService.findByBuildingId(buildingList.get(0).getId());
-                List<Student> studentList = this.studentService.findByDormitoryId(dormitoryList.get(0).getId());
+                List<Dormitory> dormitoryList = this.dormitoryService.findByBuildingId(buildingList.getFirst().getId());
+                List<Student> studentList = this.studentService.findByDormitoryId(dormitoryList.getFirst().getId());
                 req.setAttribute("buildingList", buildingList);
                 req.setAttribute("dormitoryList", dormitoryList);
                 req.setAttribute("studentList",studentList);

@@ -19,8 +19,8 @@ import java.util.List;
 @WebServlet("/student")
 public class StudentServlet extends HttpServlet {
 
-    private StudentService studentService = new StudentServiceImpl();
-    private DormitoryService dormitoryService = new DormitoryServiceImpl();
+    private final StudentService studentService = new StudentServiceImpl();
+    private final DormitoryService dormitoryService = new DormitoryServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,7 +46,7 @@ public class StudentServlet extends HttpServlet {
                 break;
             case "save":
                 String dormitoryIdStr = req.getParameter("dormitoryId");
-                Integer dormitoryId = Integer.parseInt(dormitoryIdStr);
+                int dormitoryId = Integer.parseInt(dormitoryIdStr);
                 String number = req.getParameter("number");
                 String name = req.getParameter("name");
                 String gender = req.getParameter("gender");
@@ -55,7 +55,7 @@ public class StudentServlet extends HttpServlet {
                 break;
             case "update":
                 String idStr = req.getParameter("id");
-                Integer id = Integer.parseInt(idStr);
+                int id = Integer.parseInt(idStr);
                 dormitoryIdStr = req.getParameter("dormitoryId");
                 dormitoryId = Integer.parseInt(dormitoryIdStr);
                 number = req.getParameter("number"); 

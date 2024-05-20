@@ -16,8 +16,8 @@ import java.io.IOException;
 @WebServlet("/moveout")
 public class MoveoutServlet extends HttpServlet {
 
-    private StudentService studentService = new StudentServiceImpl();
-    private MoveoutService moveoutService = new MoveoutServiceImpl();
+    private final StudentService studentService = new StudentServiceImpl();
+    private final MoveoutService moveoutService = new MoveoutServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
