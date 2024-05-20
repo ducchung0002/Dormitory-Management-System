@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet("/dormitoryAdmin")
 public class DormitoryAdminServlet extends HttpServlet {
 
-    private DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
+    private final DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -18,8 +18,8 @@ import java.io.IOException;
 @WebServlet("/account")
 public class AccountServlet extends HttpServlet {
 
-    private SystemAdminService systemAdminService = new SystemAdminServiceImpl();
-    private DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
+    private final SystemAdminService systemAdminService = new SystemAdminServiceImpl();
+    private final DormitoryAdminService dormitoryAdminService = new DormitoryAdminServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,18 +39,18 @@ public class AccountServlet extends HttpServlet {
                         SystemAdminDto systemAdminDto = this.systemAdminService.login(username, password);
                         switch (systemAdminDto.getCode()){
                             case -1:
-                                req.setAttribute("usernameError", "用户名不存在");
-                                req.getRequestDispatcher("login.jsp").forward(req, resp);
+                                req.setAttribute("usernameError", "Tài khoản không tồn tại");
+                                req.getRequestDispatcher( req.getContextPath() + "login.jsp").forward(req, resp);
                                 break;
                             case -2:
-                                req.setAttribute("passwordError", "密码错误");
-                                req.getRequestDispatcher("login.jsp").forward(req, resp);
+                                req.setAttribute("passwordError", "Mật khẩu không chính xác");
+                                req.getRequestDispatcher(req.getContextPath() + "login.jsp").forward(req, resp);
                                 break;
                             case 0:
-                                //跳转到登录成功界面
+                                // Redirect to login success UI
                                 HttpSession session = req.getSession();
                                 session.setAttribute("systemAdmin", systemAdminDto.getSystemAdmin());
-                                resp.sendRedirect("/systemadmin.jsp");
+                                resp.sendRedirect(req.getContextPath() + "/systemadmin.jsp");
                                 break;
                         }
                         break;

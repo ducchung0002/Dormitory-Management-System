@@ -1,38 +1,39 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <!-- 引入 Bootstrap -->
+  <!-- Bootstrap -->
   <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <!-- 引入 font-awesome -->
+  <!-- font-awesome -->
   <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="application/javascript">
-    function change(url,index){
+    function change(url, index){
       $(".list-group-item").removeClass("active");
       $(".list-group-item").eq(index).addClass("active");
       $("iframe").attr("src",url);
     }
   </script>
+    <title>Hệ thống quản lý ký túc xá</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
       <li>
-        <a style="font-size: 26px;">DORMS宿舍管理系统-系统管理员</a>
+        <a style="font-size: 26px;">Quản trị viên hệ thống</a>
       </li>
     </ul>
     <span style="color: #CCCCCC;font-size: 26px;position: relative;top: 5px;"></span>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a>欢迎您,${systemAdmin.name}</a>
+        <a>Xin chào, ${systemAdmin.name}</a>
       </li>
       <li>
-        <a href="/account?method=logout">安全退出</a>
+        <a href="${pageContext.request.contextPath}/account?method=logout">Đăng xuất</a>
       </li>
     </ul>
   </div>
@@ -44,47 +45,47 @@
       <a href="javascript:void(0)" class="list-group-item active" onclick="change('/dormitoryAdmin?method=list',0)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-user-circle-o fa-fw"></i>
-						</span>宿管管理
+						</span>Quản lý quản trị viên ký túc xá
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/student?method=list',1)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-user-circle fa-fw"></i>
-						</span>学生管理
+						</span>Quản lý sinh viên
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/building?method=list',2)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-home fa-fw"></i>
-						</span>楼宇管理
+						</span>Quản lý toà nhà
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/dormitory?method=list',3)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-bed fa-fw"></i>
-						</span>宿舍管理
+						</span>Quản lý ký túc xá
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/moveout?method=list',4)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-address-card-o fa-fw"></i>
-						</span>学生迁出登记
+						</span>Đăng ký chuyển đi của sinh viên
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/moveout?method=record',5)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-bookmark fa-fw"></i>
-						</span>学生迁出记录
+						</span>Hồ sơ chuyển đi của sinh viên
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/absent?method=list',6)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-bookmark-o fa-fw"></i>
-						</span>学生缺寝记录
+						</span>Bản ghi sinh viên vắng mặt
       </a>
 
     </div>
-    <!--右边内容-->
-    <iframe style="width: 81%; height: 600px; border: 0px;" src="/dormitoryAdmin?method=list"></iframe>
+    <!--page content -->
+    <iframe style="width: 81%; height: 600px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
   </div>
 </div>
 <div class="footer">
   <p class="text-center">
-    2022 © DORMS
+      Hệ thống quản lý ký túc xá
   </p>
 </div>
 </body>
