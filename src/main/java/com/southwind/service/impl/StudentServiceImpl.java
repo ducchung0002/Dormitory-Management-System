@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
         student.setCreateDate(simpleDateFormat.format(date));
         Integer save = this.studentDao.save(student);
         Integer sub = this.dormitoryDao.subAvailable(student.getDormitoryId());
-        if(save != 1 || sub != 1) throw new RuntimeException("添加学生信息失败");
+        if(save != 1 || sub != 1) throw new RuntimeException("Error");
     }
 
     @Override
@@ -44,14 +44,14 @@ public class StudentServiceImpl implements StudentService {
         //原宿舍available+1，新宿舍available-1
         Integer dormitory1 = this.dormitoryDao.addAvailable(oldDormitoryId);
         Integer dormitory2 = this.dormitoryDao.subAvailable(student.getDormitoryId());
-        if(update != 1 || dormitory1 != 1 || dormitory2 != 1) throw new RuntimeException("更新学生信息失败");
+        if(update != 1 || dormitory1 != 1 || dormitory2 != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void delete(Integer id, Integer dormitoryId) {
         Integer delete = this.studentDao.delete(id);
         Integer available = this.dormitoryDao.addAvailable(dormitoryId);
-        if(delete != 1 || available != 1) throw new RuntimeException("删除学生信息失败");
+        if(delete != 1 || available != 1) throw new RuntimeException("Error");
     }
 
     @Override

@@ -12,9 +12,6 @@ public class SystemAdminServiceImpl implements SystemAdminService {
 
     @Override
     public SystemAdminDto login(String username, String password) {
-        //1、通过username查询数据库
-        //2、查询结果为空，username错误
-        //3、查询结果不为空，再判断password是否正确
         SystemAdmin systemAdmin = this.systemAdminDao.findByUsername(username);
         SystemAdminDto systemAdminDto = new SystemAdminDto();
         if(systemAdmin == null){

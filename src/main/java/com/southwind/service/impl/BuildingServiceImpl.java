@@ -31,18 +31,17 @@ public class BuildingServiceImpl implements BuildingService {
     @Override
     public void save(Building building) {
         Integer save = this.buildingDao.save(building);
-        if(save != 1) throw new RuntimeException("添加楼宇信息失败");
+        if(save != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void update(Building building) {
         Integer update = this.buildingDao.update(building);
-        if(update != 1) throw new RuntimeException("更新楼宇信息失败");
+        if(update != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void delete(Integer id) {
-        //学生换宿舍
         List<Integer> dormitoryIdList = this.dormitoryDao.findDormitoryIdByBuildingId(id);
         for (Integer dormitoryId : dormitoryIdList) {
             List<Integer> studentIdList = this.studentDao.findStudentIdByDormitoryId(dormitoryId);
@@ -50,16 +49,15 @@ public class BuildingServiceImpl implements BuildingService {
                 Integer availableId = this.dormitoryDao.availableId();
                 Integer updateDorimtory = this.studentDao.updateDorimtory(studentId, availableId);
                 Integer subAvailable = this.dormitoryDao.subAvailable(availableId);
-                if(updateDorimtory != 1 || subAvailable != 1) throw new RuntimeException("学生更换宿舍失败");
+                if(updateDorimtory != 1 || subAvailable != 1) throw new RuntimeException("Error");
             }
         }
-        //删除宿舍
         for (Integer dormitoryId : dormitoryIdList) {
             Integer delete = this.dormitoryDao.deleteById(dormitoryId);
-            if(delete != 1) throw new RuntimeException("宿舍信息删除失败");
+            if(delete != 1) throw new RuntimeException("Error");
         }
         //删除楼宇
         Integer delete = this.buildingDao.delete(id);
-        if(delete != 1) throw new RuntimeException("楼宇信息删除失败");
+        if(delete != 1) throw new RuntimeException("Error");
     }
 }
