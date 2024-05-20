@@ -43,7 +43,7 @@ public class DormitoryAdminServlet extends HttpServlet {
                 String gender = req.getParameter("gender");
                 String telephone = req.getParameter("telephone");
                 this.dormitoryAdminService.save(new DormitoryAdmin(username, password, name, gender, telephone));
-                resp.sendRedirect("/dormitoryAdmin?method=list");
+                resp.sendRedirect("dormitoryAdmin?method=list");
                 break;
             case "update":
                 String idStr = req.getParameter("id");
@@ -54,13 +54,13 @@ public class DormitoryAdminServlet extends HttpServlet {
                 gender = req.getParameter("gender");
                 telephone = req.getParameter("telephone");
                 this.dormitoryAdminService.update(new DormitoryAdmin(id, username, password, name, gender, telephone));
-                resp.sendRedirect("/dormitoryAdmin?method=list");
+                resp.sendRedirect("dormitoryAdmin?method=list");
                 break;
             case "delete":
                 idStr = req.getParameter("id");
                 id = Integer.parseInt(idStr);
                 this.dormitoryAdminService.delete(id);
-                resp.sendRedirect("/dormitoryAdmin?method=list");
+                resp.sendRedirect("dormitoryAdmin?method=list");
                 break;
         }
     }
