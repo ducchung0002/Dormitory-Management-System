@@ -58,7 +58,7 @@ public class DormitoryServlet extends HttpServlet {
                 Integer type = Integer.parseInt(typeStr);
                 String telephone = req.getParameter("telephone");
                 this.dormitoryService.save(new Dormitory(buildingId, name, type, type, telephone));
-                resp.sendRedirect("/dormitory?method=list");
+                resp.sendRedirect("dormitory?method=list");
                 break;
             case "update":
                 String idStr = req.getParameter("id");
@@ -66,13 +66,13 @@ public class DormitoryServlet extends HttpServlet {
                 name = req.getParameter("name");
                 telephone = req.getParameter("telephone");
                 this.dormitoryService.update(new Dormitory(id, name, telephone));
-                resp.sendRedirect("/dormitory?method=list");
+                resp.sendRedirect("dormitory?method=list");
                 break;
             case "delete":
                 idStr = req.getParameter("id");
                 id = Integer.parseInt(idStr);
                 this.dormitoryService.delete(id);
-                resp.sendRedirect("/dormitory?method=list");
+                resp.sendRedirect("dormitory?method=list");
                 break;
             case "findByBuildingId":
                 buildingIdStr = req.getParameter("buildingId");

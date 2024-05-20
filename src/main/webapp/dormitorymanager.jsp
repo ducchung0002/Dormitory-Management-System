@@ -4,13 +4,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- 引入 Bootstrap -->
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 引入 font-awesome -->
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>宿舍管理系统</title>
+    <title>Hệ thống quản lý ký túc xá</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -20,7 +18,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">搜索</div>
                 <div class="panel-body">
-                    <form role="form" class="form-inline" action="/dormitory?method=search" method="post">
+                    <form role="form" class="form-inline" action="dormitory?method=search" method="post">
                         <div class="form-group">
                             <label for="name">字段：</label>
                             <select name="key" class="form-control">

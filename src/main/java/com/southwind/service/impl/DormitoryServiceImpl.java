@@ -33,13 +33,13 @@ public class DormitoryServiceImpl implements DormitoryService {
     @Override
     public void save(Dormitory dormitory) {
         Integer save = this.dormitoryDao.save(dormitory);
-        if(save != 1) throw new RuntimeException("添加宿舍信息失败");
+        if(save != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void update(Dormitory dormitory) {
         Integer update = this.dormitoryDao.update(dormitory);
-        if(update != 1) throw new RuntimeException("更新宿舍信息失败");
+        if(update != 1) throw new RuntimeException("Error");
     }
 
     @Override
@@ -49,10 +49,10 @@ public class DormitoryServiceImpl implements DormitoryService {
             Integer availableId = this.dormitoryDao.availableId();
             Integer updateDorimtory = this.studentDao.updateDorimtory(studentId, availableId);
             Integer subAvailable = this.dormitoryDao.subAvailable(availableId);
-            if(updateDorimtory != 1 || subAvailable != 1) throw new RuntimeException("学生更换宿舍失败");
+            if(updateDorimtory != 1 || subAvailable != 1) throw new RuntimeException("Error");
         }
         Integer delete = this.dormitoryDao.deleteById(id);
-        if(delete != 1) throw new RuntimeException("删除宿舍信息失败");
+        if(delete != 1) throw new RuntimeException("Error");
     }
 
     @Override

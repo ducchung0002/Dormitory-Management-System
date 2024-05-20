@@ -27,7 +27,7 @@ public class MoveoutServiceImpl implements MoveoutService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         moveout.setCreateDate(simpleDateFormat.format(date));
         Integer save = this.moveoutDao.save(moveout);
-        if(save != 1 || updateStateById != 1 || addAvailable != 1) throw new RuntimeException("迁出学生失败");
+        if(save != 1 || updateStateById != 1 || addAvailable != 1) throw new RuntimeException("Error");
     }
 
     @Override

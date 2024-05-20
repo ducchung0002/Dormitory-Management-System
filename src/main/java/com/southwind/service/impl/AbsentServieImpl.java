@@ -14,7 +14,7 @@ public class AbsentServieImpl implements AbsentService {
     @Override
     public void save(Absent absent) {
         Integer save = this.absentDao.save(absent);
-        if(save != 1) throw new RuntimeException("添加缺寝记录失败");
+        if(save != 1) throw new RuntimeException("Error");
     }
 
     @Override
