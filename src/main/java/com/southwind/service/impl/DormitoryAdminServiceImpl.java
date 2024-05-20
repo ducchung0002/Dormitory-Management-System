@@ -26,26 +26,23 @@ public class DormitoryAdminServiceImpl implements DormitoryAdminService {
     @Override
     public void save(DormitoryAdmin dormitoryAdmin) {
         Integer save = this.dormitoryAdminDao.save(dormitoryAdmin);
-        if(save != 1) throw new RuntimeException("宿管信息添加失败");
+        if(save != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void update(DormitoryAdmin dormitoryAdmin) {
         Integer update = this.dormitoryAdminDao.update(dormitoryAdmin);
-        if(update != 1) throw new RuntimeException("宿管信息更新失败");
+        if(update != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public void delete(Integer id) {
         Integer delete = this.dormitoryAdminDao.delete(id);
-        if(delete != 1) throw new RuntimeException("宿管信息删除失败");
+        if(delete != 1) throw new RuntimeException("Error");
     }
 
     @Override
     public DormitoryAdminDto login(String username, String password) {
-        //1、通过username查询数据库
-        //2、查询结果为空，username错误
-        //3、查询结果不为空，再判断password是否正确
         DormitoryAdmin dormitoryAdmin = this.dormitoryAdminDao.findByUsername(username);
         DormitoryAdminDto dormitoryAdminDto = new DormitoryAdminDto();
         if(dormitoryAdmin == null){

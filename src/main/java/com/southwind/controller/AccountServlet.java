@@ -39,15 +39,14 @@ public class AccountServlet extends HttpServlet {
                         SystemAdminDto systemAdminDto = this.systemAdminService.login(username, password);
                         switch (systemAdminDto.getCode()){
                             case -1:
-                                req.setAttribute("usernameError", "用户名不存在");
+                                req.setAttribute("usernameError", "Tên đăng nhập không tồn tại");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case -2:
-                                req.setAttribute("passwordError", "密码错误");
+                                req.setAttribute("passwordError", "Sai mật khẩu");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case 0:
-                                //跳转到登录成功界面
                                 HttpSession session = req.getSession();
                                 session.setAttribute("systemAdmin", systemAdminDto.getSystemAdmin());
                                 resp.sendRedirect("systemadmin.jsp");
@@ -58,15 +57,14 @@ public class AccountServlet extends HttpServlet {
                         DormitoryAdminDto dormitoryAdminDto = this.dormitoryAdminService.login(username, password);
                         switch (dormitoryAdminDto.getCode()){
                             case -1:
-                                req.setAttribute("usernameError", "用户名不存在");
+                                req.setAttribute("usernameError", "Tên đăng nhập không tồn tại");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case -2:
-                                req.setAttribute("passwordError", "密码错误");
+                                req.setAttribute("passwordError", "Sai mật khẩu");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case 0:
-                                //跳转到登录成功界面
                                 HttpSession session = req.getSession();
                                 session.setAttribute("dormitoryAdmin", dormitoryAdminDto.getDormitoryAdmin());
                                 resp.sendRedirect("dormitoryadmin.jsp");

@@ -58,7 +58,7 @@ public class AbsentServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 DormitoryAdmin dormitoryAdmin = (DormitoryAdmin) session.getAttribute("dormitoryAdmin");
                 this.absentService.save(new Absent(buildingId, dormitoryId, studentId, dormitoryAdmin.getId(), date,reason));
-                resp.sendRedirect("/absent?method=init");
+                resp.sendRedirect("absent?method=init");
                 break;
             case "list":
                 req.setAttribute("list", this.absentService.list());
