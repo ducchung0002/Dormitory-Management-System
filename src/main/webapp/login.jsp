@@ -16,7 +16,7 @@
 <body>
 <div class="container">
   <div class="form row" style="height: 300px;">
-    <form class="form-horizontal col-md-offset-3" id="login_form" action="<%= request.getContextPath()%>/account?method=login" method="post">
+    <form class="form-horizontal col-md-offset-3" id="login_form" action="account?method=login" method="post">
       <h3 class="form-title">用户登录</h3>
       <div class="col-md-9">
         <div class="form-group">

@@ -32,7 +32,7 @@
         <a>欢迎您,${systemAdmin.name}</a>
       </li>
       <li>
-        <a href="/account?method=logout">安全退出</a>
+        <a href="account?method=logout">安全退出</a>
       </li>
     </ul>
   </div>
@@ -79,7 +79,7 @@
 
     </div>
     <!--右边内容-->
-    <iframe style="width: 81%; height: 600px; border: 0px;" src="/dormitoryAdmin?method=list"></iframe>
+    <iframe style="width: 81%; height: 600px; border: 0px;" src="dormitoryAdmin?method=list"></iframe>
   </div>
 </div>
 <div class="footer">

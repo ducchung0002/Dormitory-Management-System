@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">搜索</div>
                 <div class="panel-body">
-                    <form role="form" class="form-inline" action="/moveout?method=recordSearch" method="post">
+                    <form role="form" class="form-inline" action="moveout?method=recordSearch" method="post">
                         <div class="form-group">
                             <label for="name">字段：</label>
                             <select name="key" class="form-control">

@@ -50,7 +50,7 @@ public class AccountServlet extends HttpServlet {
                                 //跳转到登录成功界面
                                 HttpSession session = req.getSession();
                                 session.setAttribute("systemAdmin", systemAdminDto.getSystemAdmin());
-                                resp.sendRedirect("/systemadmin.jsp");
+                                resp.sendRedirect("systemadmin.jsp");
                                 break;
                         }
                         break;
@@ -69,7 +69,7 @@ public class AccountServlet extends HttpServlet {
                                 //跳转到登录成功界面
                                 HttpSession session = req.getSession();
                                 session.setAttribute("dormitoryAdmin", dormitoryAdminDto.getDormitoryAdmin());
-                                resp.sendRedirect("/dormitoryadmin.jsp");
+                                resp.sendRedirect("dormitoryadmin.jsp");
                                 break;
                         }
                         break;
@@ -77,7 +77,7 @@ public class AccountServlet extends HttpServlet {
                 break;
             case "logout":
                 req.getSession().invalidate();
-                resp.sendRedirect("/login.jsp");
+                resp.sendRedirect("login.jsp");
                 break;
         }
 
