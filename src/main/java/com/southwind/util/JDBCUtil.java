@@ -5,8 +5,8 @@ import java.sql.*;
 public class JDBCUtil {
     private static final String driverName = "com.mysql.cj.jdbc.Driver";
     private static final String URI = "jdbc:mysql://localhost:3306/dormitory";
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "admin";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
 
     static {
         try {
