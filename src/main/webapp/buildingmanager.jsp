@@ -14,48 +14,48 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-10">
-            <!-- 顶部搜索部分 -->
+            <!-- Search bar -->
             <div class="panel panel-default">
-                <div class="panel-heading">搜索</div>
+                <div class="panel-heading">Tìm kiếm</div>
                 <div class="panel-body">
                     <form role="form" class="form-inline" action="building?method=search" method="post">
                         <div class="form-group">
-                            <label for="name">字段：</label>
+                            <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
-                                <option value="name">名称</option>
-                                <option value="introduction">介绍</option>
+                                <option value="name">Tên</option>
+                                <option value="introduction">Mô tả</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label for="value">值：</label>
-                            <input type="text" class="form-control" name="value" placeholder="字段值" maxlength="12" style="width: 130px">
+                            <label for="value">Giá trị: </label>
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">
 										<span style="margin-right: 5px"
                                               class="glyphicon glyphicon-search" aria-hidden="true">
-										</span>开始搜索
+										</span>Tìm
                             </button>
                         </div>
                         <div class="form-group " style="margin-left: 48px">
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
 										<span style="margin-right: 5px" class="" aria-hidden="true">
-											<i class="fa fa-user-plus">添加楼宇信息</i>
+											<i class="fa fa-user-plus">Thêm toà nhà</i>
 											</span>
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- 列表展示-->
+            <!-- List building-->
             <div class="table-responsive">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>名称</th>
-                        <th>介绍</th>
-                        <th>管理员</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Quản trị viên</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,13 +74,13 @@
                                             data-admin-id="${building.adminId}"
                                             data-toggle="modal"
                                             data-target="#updateUserModal">
-                                        <i class="fa fa-user-o">修改</i>
+                                        <i class="fa fa-user-o">Cập nhật</i>
                                     </button>
 
                                     <button type="button" class="btn btn-danger "
                                             data-id="${building.id}" data-toggle="modal"
                                             onclick="" data-target="#delUserModal">
-                                        <i class="fa fa-user-times">删除</i>
+                                        <i class="fa fa-user-times">Xoá</i>
                                     </button>
                                 </div>
                             </td>
@@ -88,8 +88,8 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <!-- add框示例（Modal） -->
-                <form method="post" action="/building?method=save" class="form-horizontal" style="margin-top: 0px" role="form"
+                <!-- hidden add admin form -->
+                <form method="post" action="${pageContext.request.contextPath}/building?method=save" class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="addUserModal" tabindex="-1"
                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -98,29 +98,29 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">x</button>
-                                    <h4 class="modal-title" id="myModalLabel">添加楼宇信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Add building information</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">名称</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Tên</label>
                                             <div class="col-sm-9">
                                                 <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="请输入名称">
+                                                       name="name" value="" placeholder="Tên...">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">介绍</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Mô tả</label>
                                             <div class="col-sm-9">
                                                 <input type="text" required class="form-control" id="introduction"
-                                                       name="introduction" value="" placeholder="请输入介绍">
+                                                       name="introduction" value="" placeholder="Mô tả...">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">管理员</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Quản trị viên</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="adminId">
                                                     <c:forEach items="${adminList}" var="admin">
@@ -133,16 +133,16 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <!-- update框示例（Modal） -->
-                <form method="post" action="/building?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
+                <!-- hidden update form -->
+                <form method="post" action="${pageContext.request.contextPath}/building?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="updateUserModal" tabindex="-1"
                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -151,7 +151,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">x</button>
-                                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">User info</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
@@ -165,23 +165,23 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">名称</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Tên</label>
                                             <div class="col-sm-9">
                                                 <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="请输入名称">
+                                                       name="name" value="" placeholder="Tên...">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">介绍</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Mô tả</label>
                                             <div class="col-sm-9">
                                                 <input type="text" required class="form-control" id="introduction"
-                                                       name="introduction" value="" placeholder="请输入介绍">
+                                                       name="introduction" value="" placeholder="Mô tả...">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">管理员</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Quản trị viên</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="adminId">
                                                     <c:forEach items="${adminList}" var="admin">
@@ -194,16 +194,16 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <!-- 删除模态框示例（Modal） -->
-                <form method="post" action="/building?method=delete"
+                <!-- hidden delete admin warning -->
+                <form method="post" action="${pageContext.request.contextPath}/building?method=delete"
                       class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="delUserModal" tabindex="-1"
@@ -213,13 +213,13 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">User info</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
                                             <div class="col-sm-9">
-                                                <h3 class="col-sm-18 control-label" id="deleteLabel">删除信息</h3>
+                                                <h3 class="col-sm-18 control-label" id="deleteLabel">Delete message</h3>
                                                 <input type="hidden" class="form-control" id="tab"
                                                        name="tab" placeholder="" value="dor_admin"> <input
                                                     type="hidden" class="form-control" id="id"
@@ -229,8 +229,8 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-danger">删除</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-danger">Xoá</button>
                                     <span id="tip"> </span>
                                 </div>
                             </div>
@@ -251,12 +251,12 @@
         var introduction = button.data('introduction')
         var modal = $(this)
 
-        modal.find('.modal-title').text('修改楼宇信息')
+        modal.find('.modal-title').text('Cập nhật thông tin toà nhà')
         modal.find('#id').val(id)
         var list = modal.find('.adminId')
         for (var i=0;i<list.length;i++){
             var obj = $(list.get(i));
-            if(adminId == obj.val()){
+            if(adminId === obj.val()){
                 obj.prop("selected","selected");
             }
         }
@@ -268,8 +268,8 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var modal = $(this)
-        modal.find('.modal-title').text('删除楼宇信息')
-        modal.find('#deleteLabel').text('是否删除ID为  ' + id + ' 的信息')
+        modal.find('.modal-title').text('Xoá toà nhà')
+        modal.find('#deleteLabel').text('Xoá toà nhà (' + id + ') ?')
         modal.find('#id').val(id)
     })
 </script>

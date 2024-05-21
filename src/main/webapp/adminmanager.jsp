@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <form role="form" class="form-inline" action="${pageContext.request.contextPath}/dormitoryAdmin?method=search" method="post">
                         <div class="form-group">
-                            <label for="name">Trường</label>
+                            <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
                                 <option value="username">Tên tài khoản</option>
                                 <option value="name">Họ tên</option>
@@ -29,8 +29,8 @@
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label>Giá trị</label>
-                            <input type="text" class="form-control" name="value" placeholder="Giá trị" maxlength="12" style="width: 130px">
+                            <label>Giá trị: </label>
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">
@@ -42,7 +42,7 @@
                         <div class="form-group " style="margin-left: 48px">
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
 										<span style="margin-right: 5px" class="" aria-hidden="true">
-											<i class="fa fa-user-plus">Thêm</i>
+											<i class="fa fa-user-plus">Thêm quản trị viên</i>
 											</span>
                             </button>
                         </div>
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +287,7 @@
         var telephone = button.data('telephone')
         var modal = $(this)
 
-        modal.find('.modal-title').text('修改宿管信息')
+        modal.find('.modal-title').text('Cập nhật thông tin quản trị viên')
         modal.find('#id').val(id)
         modal.find('#username').val(username)
         modal.find('#password').val(password)

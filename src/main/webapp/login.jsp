@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
         <div class="form-group">
           <i class="fa fa-user fa-lg"></i>
           <span style="color: red;font-size: 13px;margin-left: -17px;">${usernameError}</span>
-          <input class="form-control required" required placeholder="Vui lòng nhập tên đăng nhập" type="text"name="username"/>
+          <input class="form-control required" required placeholder="Vui lòng nhập tên đăng nhập" type="text" name="username"/>
         </div>
         <div class="form-group">
           <i class="fa fa-lock fa-lg"></i>

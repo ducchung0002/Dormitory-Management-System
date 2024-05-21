@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -14,9 +14,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-10">
-            <!-- 顶部搜索部分 -->
+            <!-- Search br -->
             <div class="panel panel-default">
-                <div class="panel-heading">搜索</div>
+                <div class="panel-heading">Tìm kiếm</div>
                 <div class="panel-body">
                     <form role="form" class="form-inline" action="dormitory?method=search" method="post">
                         <div class="form-group">

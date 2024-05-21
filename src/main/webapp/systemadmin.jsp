@@ -41,7 +41,6 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2">
-
       <a href="javascript:void(0)" class="list-group-item active" onclick="change('/dormitoryAdmin?method=list',0)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-user-circle-o fa-fw"></i>
@@ -80,7 +79,7 @@
 
     </div>
     <!--page content -->
-    <iframe style="width: 81%; height: 600px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
+    <iframe style="width: 81%; height: 850px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
   </div>
 </div>
 <div class="footer">

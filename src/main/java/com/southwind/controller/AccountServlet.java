@@ -58,11 +58,11 @@ public class AccountServlet extends HttpServlet {
                         DormitoryAdminDto dormitoryAdminDto = this.dormitoryAdminService.login(username, password);
                         switch (dormitoryAdminDto.getCode()){
                             case -1:
-                                req.setAttribute("usernameError", "用户名不存在");
+                                req.setAttribute("usernameError", "Tài khoản không tồn tại");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case -2:
-                                req.setAttribute("passwordError", "密码错误");
+                                req.setAttribute("passwordError", "Mật khẩu không chính xác");
                                 req.getRequestDispatcher("login.jsp").forward(req, resp);
                                 break;
                             case 0:
