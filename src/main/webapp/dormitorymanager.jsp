@@ -82,7 +82,9 @@
                                     </button>
 
                                     <button type="button" class="btn btn-danger "
-                                            data-id="${dormitory.id}" data-toggle="modal"
+                                            data-id="${dormitory.id}"
+                                            data-name="${dormitory.name}"
+                                            data-toggle="modal"
                                             onclick="" data-target="#delUserModal">
                                         <i class="fa fa-user-times">Xoá</i>
                                     </button>
@@ -260,9 +262,10 @@
     $('#delUserModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
+        var name = button.data('name')
         var modal = $(this)
         modal.find('.modal-title').text('Cảnh báo xoá phòng')
-        modal.find('#deleteLabel').text('Xoá phòng ' + id + ' ?')
+        modal.find('#deleteLabel').text('Xoá phòng ' + name + '?')
         modal.find('#id').val(id)
     })
 </script>

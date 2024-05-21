@@ -8,6 +8,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<jsp:forward page="login.jsp"></jsp:forward>
+    <% response.sendRedirect(request.getContextPath() + "/login.jsp"); %>
 </body>
 </html>

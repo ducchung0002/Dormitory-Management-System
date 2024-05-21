@@ -10,7 +10,6 @@
     <!-- font-awesome -->
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Hệ thống quản lý ký túc xá</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -49,8 +48,10 @@
                     </form>
                 </div>
             </div>
-            <!-- 列表展示-->
+
+            <!-- display list of admin -->
             <div class="table-responsive">
+                <!-- display as table -->
                 <table class="table table-hover ">
                     <thead>
                     <tr>
@@ -87,8 +88,10 @@
                                     </button>
 
                                     <button type="button" class="btn btn-danger "
-                                            data-id="${dormitoryAdmin.id}" data-toggle="modal"
-                                            onclick="" data-target="#delUserModal">
+                                            data-id="${dormitoryAdmin.id}"
+                                            data-name="${dormitoryAdmin.name}"
+                                            data-toggle="modal"
+                                            data-target="#delUserModal">
                                         <i class="fa fa-user-times">Xoá</i>
                                     </button>
                                 </div>
@@ -97,7 +100,8 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <!-- hidden add new dorm admin form form -->
+
+                <!-- hidden add new dorm admin form -->
                 <form method="post" action="${pageContext.request.contextPath}/dormitoryAdmin?method=save" class="form-horizontal" style="margin-top: 0" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="addUserModal" tabindex="-1"
@@ -106,7 +110,8 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">x</button>
+                                            aria-hidden="true">x
+                                    </button>
                                     <h4 class="modal-title" id="myModalLabel">Thêm quản trị viên ký túc xá</h4>
                                 </div>
                                 <div class="modal-body">
@@ -163,7 +168,7 @@
                     </div>
                 </form>
 
-                <!-- hidden update dorm admin form -->
+                <!-- hidden update dorm admin form (modal) -->
                 <form method="post" action="${pageContext.request.contextPath}/dormitoryAdmin?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="updateUserModal" tabindex="-1"
@@ -172,8 +177,9 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">x</button>
-                                    <h4 class="modal-title" id="myModalLabel">Thông tin</h4>
+                                            aria-hidden="true">x
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel"></h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
@@ -246,14 +252,15 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×</button>
+                                            aria-hidden="true">×
+                                    </button>
                                     <h4 class="modal-title" id="myModalLabel">Thông tin quản trị viên</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
                                             <div class="col-sm-9">
-                                                <h3 class="col-sm-18 control-label" id="deleteLabel">Xoá tin nhắn</h3>
+                                                <h3 class="col-sm-18 control-label" id="deleteLabel">Message</h3>
                                                 <input type="hidden" class="form-control" id="tab"
                                                        name="tab" placeholder="" value="dor_admin"> <input
                                                     type="hidden" class="form-control" id="id"
@@ -277,36 +284,41 @@
 </div>
 
 <script>
-    $('#updateUserModal').on('show.bs.modal', function(event) {
+    $('#updateUserModal').on('show.bs.modal', function (event) {
+        // get the button that triggered the modal
         var button = $(event.relatedTarget)
+        // extract value from data-* attributes
         var id = button.data('id')
         var username = button.data('username')
         var password = button.data('password')
         var name = button.data('name')
         var gender = button.data('gender')
         var telephone = button.data('telephone')
+        // update the modal's content
         var modal = $(this)
-
+        // set the modal title
         modal.find('.modal-title').text('Cập nhật thông tin quản trị viên')
+        // set the form action
         modal.find('#id').val(id)
         modal.find('#username').val(username)
         modal.find('#password').val(password)
         modal.find('#name').val(name)
         var list = modal.find('.gender')
-        for(var i=0;i<list.length;i++){
-            if(gender === $(list.get(i)).val()){
-                $(list.get(i)).prop('checked',true)
+        for (var i = 0; i < list.length; i++) {
+            if (gender === $(list.get(i)).val()) {
+                $(list.get(i)).prop('checked', true)
             }
         }
         modal.find('#telephone').val(telephone)
     })
 
-    $('#delUserModal').on('show.bs.modal', function(event) {
+    $('#delUserModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
+        var name = button.data('name')
         var modal = $(this)
         modal.find('.modal-title').text('Cảnh báo xoá quản trị viên ký túc xá')
-        modal.find('#deleteLabel').text('Xoá quản trị viên ' + id + '?')
+        modal.find('#deleteLabel').text('Xoá quản trị viên ' + name + '?')
         modal.find('#id').val(id)
     })
 </script>

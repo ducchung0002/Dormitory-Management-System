@@ -4,11 +4,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.png" type="image/png">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Hệ thống quản lý ký túc xá</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -23,11 +24,11 @@
                             <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
                                 <option value="number">Mã sinh viên</option>
-                                <option value="name">Giới tính</option>
+                                <option value="name">Họ tên</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label for="value">Giá trị: </label>
+                            <label>Giá trị: </label>
                             <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
@@ -47,6 +48,7 @@
                     </form>
                 </div>
             </div>
+
             <!-- Student list-->
             <div class="table-responsive">
                 <table class="table table-hover ">
@@ -89,6 +91,7 @@
                                     <button type="button" class="btn btn-danger "
                                             data-id="${student.id}"
                                             data-dormitory-id="${student.dormitoryId}"
+                                            data-number="${student.number}"
                                             data-toggle="modal"
                                             onclick="" data-target="#delUserModal">
                                         <i class="fa fa-user-times">Xoá</i>
@@ -128,16 +131,14 @@
                                         <div class="form-group">
                                             <label for="user_id" class="col-sm-3 control-label">Mã sinh viên</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="number"
-                                                       name="number" value="" placeholder="Mã sinh viên...">
+                                                <input type="text" required class="form-control" id="number" name="number">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="user_id" class="col-sm-3 control-label">Tên sinh viên</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="Tên sinh viên...">
+                                                <input type="text" required class="form-control" id="name" name="name">
                                             </div>
                                         </div>
 
@@ -200,16 +201,14 @@
                                         <div class="form-group">
                                             <label for="user_id" class="col-sm-3 control-label">Mã sinh viên</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="number"
-                                                       name="number" value="" placeholder="请输入学号">
+                                                <input type="text" required class="form-control" id="number" name="number">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="user_id" class="col-sm-3 control-label">Tên sinh viên</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="请输入姓名">
+                                                <input type="text" required class="form-control" id="name" name="name">
                                             </div>
                                         </div>
 
@@ -261,9 +260,9 @@
                                             <div class="col-sm-9">
                                                 <h3 class="col-sm-18 control-label" id="deleteLabel">Xoá thông báo</h3>
                                                 <input type="hidden" class="form-control" id="tab"
-                                                       name="tab" placeholder="" value="dor_admin"> <input
+                                                       name="tab" value="dor_admin"> <input
                                                     type="hidden" class="form-control" id="id"
-                                                    name="id" placeholder="">
+                                                    name="id">
                                                 <input type="hidden" name="dormitoryId" id="dormitoryId"/>
                                             </div>
                                         </div>
@@ -318,9 +317,10 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var dormitoryId = button.data('dormitory-id')
+        var name = button.data('name')
         var modal = $(this)
-        modal.find('.modal-title').text('Cảnh báo xoá học sinh')
-        modal.find('#deleteLabel').text('Bạn có chắc chắn muốn xoá học sinh ' + id + ' không?')
+        modal.find('.modal-title').text('Cảnh báo xoá sinh viên')
+        modal.find('#deleteLabel').text('Xoá sinh viên ' + name + ' không?')
         modal.find('#id').val(id)
         modal.find('#dormitoryId').val(dormitoryId)
     })

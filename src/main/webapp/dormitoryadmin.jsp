@@ -1,19 +1,21 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script type="application/javascript">
-        function change(url,index){
+        function change(url, index) {
             $(".list-group-item").removeClass("active");
             $(".list-group-item").eq(index).addClass("active");
-            $("iframe").attr("src",url);
+            $("iframe").attr("src", url);
         }
     </script>
 </head>
@@ -22,7 +24,7 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-left">
             <li>
-                <a style="font-size: 26px;">Hệ thống quản lý ký túc xá DORMS-quản trị viên ký túc xá</a>
+                <a style="font-size: 26px;">Quản trị viên ký túc xá</a>
             </li>
         </ul>
         <span style="color: #CCCCCC;font-size: 26px;position: relative;top: 5px;"></span>
@@ -52,13 +54,8 @@
             </a>
 
         </div>
-        <iframe style="width: 81%; height: 600px; border: 0px;" src="absent?method=init"></iframe>
+        <iframe style="width: 81%; height: 600px; border: 0;" src="absent?method=init"></iframe>
     </div>
-</div>
-<!-- <div class="footer">
-    <p class="text-center">
-        2022 © DORMS
-    </p> -->
 </div>
 </body>
 </html>
