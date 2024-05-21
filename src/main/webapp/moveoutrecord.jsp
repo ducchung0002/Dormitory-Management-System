@@ -15,42 +15,42 @@
     <div class="row">
         <div class="col-sm-10">
 
-            <!-- 顶部搜索部分 -->
+            <!-- search bar -->
             <div class="panel panel-default">
-                <div class="panel-heading">搜索</div>
+                <div class="panel-heading">Tìm kiếm</div>
                 <div class="panel-body">
                     <form role="form" class="form-inline" action="moveout?method=recordSearch" method="post">
                         <div class="form-group">
-                            <label for="name">字段：</label>
+                            <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
-                                <option value="studentName">学生</option>
-                                <option value="dormitoryName">宿舍</option>
+                                <option value="studentName">Họ tên</option>
+                                <option value="dormitoryName">Phòng</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label for="value">值：</label>
-                            <input type="text" class="form-control" name="value" placeholder="字段值" maxlength="12" style="width: 130px">
+                            <label for="value">Giá trị: </label>
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">
 										<span style="margin-right: 5px"
                                               class="glyphicon glyphicon-search" aria-hidden="true">
-										</span>开始搜索
+										</span>Tìm
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- 列表展示-->
+            <!-- move out record display-->
             <div class="table-responsive">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>学生</th>
-                        <th>宿舍</th>
-                        <th>迁出原因</th>
-                        <th>迁出日期</th>
+                        <th>Họ tên</th>
+                        <th>Phòng</th>
+                        <th>Lý do rời</th>
+                        <th>Ngày rời</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -20,45 +20,45 @@
                 <div class="panel-body">
                     <form role="form" class="form-inline" action="dormitory?method=search" method="post">
                         <div class="form-group">
-                            <label for="name">字段：</label>
+                            <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
-                                <option value="name">名称</option>
-                                <option value="telephone">电话</option>
+                                <option value="name">Toà nhà</option>
+                                <option value="telephone">Số điện thoại</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label for="value">值：</label>
-                            <input type="text" class="form-control" name="value" placeholder="字段值" maxlength="12" style="width: 130px">
+                            <label for="value">Giá trị: </label>
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">
 										<span style="margin-right: 5px"
                                               class="glyphicon glyphicon-search" aria-hidden="true">
-										</span>开始搜索
+										</span>Tìm
                             </button>
                         </div>
                         <div class="form-group " style="margin-left: 48px">
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUserModal">
 										<span style="margin-right: 5px" class="" aria-hidden="true">
-											<i class="fa fa-user-plus">添加宿舍信息</i>
+											<i class="fa fa-user-plus">Thêm thông tin phòng</i>
 											</span>
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- 列表展示-->
+            <!-- room list -->
             <div class="table-responsive">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>楼宇</th>
-                        <th>名称</th>
-                        <th>几人间</th>
-                        <th>空余床位</th>
-                        <th>电话</th>
-                        <th>操作</th>
+                        <th>Toà nhà</th>
+                        <th>Mã phòng</th>
+                        <th>Sức chứa</th>
+                        <th>Còn trống</th>
+                        <th>Điện thoại</th>
+                        <th>Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -78,13 +78,13 @@
                                             data-telephone="${dormitory.telephone}"
                                             data-toggle="modal"
                                             data-target="#updateUserModal">
-                                        <i class="fa fa-user-o">修改</i>
+                                        <i class="fa fa-user-o">Cập nhật</i>
                                     </button>
 
                                     <button type="button" class="btn btn-danger "
                                             data-id="${dormitory.id}" data-toggle="modal"
                                             onclick="" data-target="#delUserModal">
-                                        <i class="fa fa-user-times">删除</i>
+                                        <i class="fa fa-user-times">Xoá</i>
                                     </button>
                                 </div>
                             </td>
@@ -92,8 +92,8 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <!-- add框示例（Modal） -->
-                <form method="post" action="/dormitory?method=save" class="form-horizontal" style="margin-top: 0px" role="form"
+                <!-- hidden add room form -->
+                <form method="post" action="${pageContext.request.contextPath}/dormitory?method=save" class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="addUserModal" tabindex="-1"
                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -102,12 +102,12 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">x</button>
-                                    <h4 class="modal-title" id="myModalLabel">添加宿舍信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Thêm phòng</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">楼宇</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Toà nhà</label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="buildingId">
                                                     <c:forEach items="${buildingList}" var="building">
@@ -118,46 +118,45 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">名称</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Mã phòng</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="请输入姓名">
+                                                <input type="text" required class="form-control" id="name" name="name">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">几人间</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Sức chứa</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" name="type">
-                                                    <option value="4">4</option>
-                                                    <option value="6">6</option>
-                                                    <option value="8">8</option>
-                                                    <option value="10">10</option>
-                                                </select>
+<%--                                                <select class="form-control" name="type">--%>
+<%--                                                    <option value="4">4</option>--%>
+<%--                                                    <option value="6">6</option>--%>
+<%--                                                    <option value="8">8</option>--%>
+<%--                                                    <option value="10">10</option>--%>
+<%--                                                </select>--%>
+                                                <input class="form-control" type="number" name="type" min="1" max="10">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">联系电话</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Số điện thoại</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="telephone"
-                                                       name="telephone" value="" placeholder="">
+                                                <input type="text" required class="form-control" id="telephone" name="telephone">
                                             </div>
                                         </div>
 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <!-- update框示例（Modal） -->
-                <form method="post" action="/dormitory?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
+                <!-- hidden update dorm form -->
+                <form method="post" action="${pageContext.request.contextPath}/dormitory?method=update" class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="updateUserModal" tabindex="-1"
                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -166,7 +165,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">x</button>
-                                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Cập nhật phòng</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
@@ -180,34 +179,32 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">名称</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Mã phòng</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="name"
-                                                       name="name" value="" placeholder="请输入姓名">
+                                                <input type="text" required class="form-control" id="name" name="name">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">联系电话</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Số điện thoại</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control" id="telephone"
-                                                       name="telephone" value="" placeholder="">
+                                                <input type="text" required class="form-control" id="telephone" name="telephone">
                                             </div>
                                         </div>
 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <!-- 删除模态框示例（Modal） -->
-                <form method="post" action="/dormitory?method=delete"
+                <!-- delete room -->
+                <form method="post" action="${pageContext.request.contextPath}/dormitory?method=delete"
                       class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
                     <div class="modal fade" id="delUserModal" tabindex="-1"
@@ -217,24 +214,24 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Xoá phòng</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
                                             <div class="col-sm-9">
-                                                <h3 class="col-sm-18 control-label" id="deleteLabel">删除信息</h3>
+                                                <h3 class="col-sm-18 control-label" id="deleteLabel">Xoá tin nhắn</h3>
                                                 <input type="hidden" class="form-control" id="tab"
                                                        name="tab" placeholder="" value="dor_admin"> <input
                                                     type="hidden" class="form-control" id="id"
-                                                    name="id" placeholder="">
+                                                    name="id">
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-danger">删除</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Huỷ bỏ</button>
+                                    <button type="submit" class="btn btn-danger">Xoá</button>
                                     <span id="tip"> </span>
                                 </div>
                             </div>
@@ -254,7 +251,7 @@
         var telephone = button.data('telephone')
         var modal = $(this)
 
-        modal.find('.modal-title').text('修改宿舍信息')
+        modal.find('.modal-title').text('Cập nhật phòng')
         modal.find('#id').val(id)
         modal.find('#name').val(name)
         modal.find('#telephone').val(telephone)
@@ -264,8 +261,8 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var modal = $(this)
-        modal.find('.modal-title').text('删除宿舍信息')
-        modal.find('#deleteLabel').text('是否删除ID为  ' + id + ' 的信息')
+        modal.find('.modal-title').text('Cảnh báo xoá phòng')
+        modal.find('#deleteLabel').text('Xoá phòng ' + id + ' ?')
         modal.find('#id').val(id)
     })
 </script>

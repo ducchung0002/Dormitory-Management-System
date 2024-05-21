@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group" style="margin-left: 20px">
                             <label for="value">Giá trị：</label>
-                            <input type="text" class="form-control" name="value" placeholder="Giá trị" maxlength="12" style="width: 130px">
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">

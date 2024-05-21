@@ -44,22 +44,22 @@
       <a href="javascript:void(0)" class="list-group-item active" onclick="change('/dormitoryAdmin?method=list',0)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-user-circle-o fa-fw"></i>
-						</span>Quản lý quản trị viên ký túc xá
+						</span>Quản trị viên ký túc xá
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/student?method=list',1)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-user-circle fa-fw"></i>
-						</span>Quản lý sinh viên
+						</span>Sinh viên
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/building?method=list',2)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-home fa-fw"></i>
-						</span>Quản lý toà nhà
+						</span>Toà nhà
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/dormitory?method=list',3)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-bed fa-fw"></i>
-						</span>Quản lý ký túc xá
+						</span>Phòng
       </a>
       <a href="javascript:void(0)" class="list-group-item" onclick="change('/moveout?method=list',4)">
 						<span class="" aria-hidden="true">
@@ -82,10 +82,10 @@
     <iframe style="width: 81%; height: 850px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
   </div>
 </div>
-<div class="footer">
-  <p class="text-center">
-      Hệ thống quản lý ký túc xá
-  </p>
-</div>
+<%--<div class="footer">--%>
+<%--  <p class="text-center">--%>
+<%--      Hệ thống quản lý ký túc xá--%>
+<%--  </p>--%>
+<%--</div>--%>
 </body>
 </html>

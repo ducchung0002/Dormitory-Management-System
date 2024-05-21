@@ -15,44 +15,44 @@
     <div class="row">
         <div class="col-sm-10">
 
-            <!-- 顶部搜索部分 -->
+            <!-- Search bar -->
             <div class="panel panel-default">
-                <div class="panel-heading">搜索</div>
+                <div class="panel-heading">Tìm kiếm</div>
                 <div class="panel-body">
-                    <form role="form" class="form-inline" action="/moveout?method=search" method="post">
+                    <form role="form" class="form-inline" action="${pageContext.request.contextPath}/moveout?method=search" method="post">
                         <div class="form-group">
-                            <label for="name">字段：</label>
+                            <label for="name">Thuộc tính: </label>
                             <select name="key" class="form-control">
-                                <option value="number">学号</option>
-                                <option value="name">姓名</option>
+                                <option value="number">Mã sinh viên</option>
+                                <option value="name">Họ tên</option>
                             </select>
                         </div>
                         <div class="form-group" style="margin-left: 20px">
-                            <label for="value">值：</label>
-                            <input type="text" class="form-control" name="value" placeholder="字段值" maxlength="12" style="width: 130px">
+                            <label for="value">Giá trị: </label>
+                            <input type="text" class="form-control" name="value" maxlength="12" style="width: 130px">
                         </div>
                         <div class="form-group " style="margin-left: 20px">
                             <button type="submit" class="btn btn-info ">
 										<span style="margin-right: 5px"
                                               class="glyphicon glyphicon-search" aria-hidden="true">
-										</span>开始搜索
+										</span>Tìm
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- 列表展示-->
+            <!-- move out list display -->
             <div class="table-responsive">
                 <table class="table table-hover ">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>宿舍</th>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>性别</th>
-                        <th>状态</th>
-                        <th>操作</th>
+                        <th>Phòng</th>
+                        <th>Mã sinh viên</th>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,7 +71,7 @@
                                             data-dormitory-id="${student.dormitoryId}"
                                             data-toggle="modal"
                                             data-target="#delUserModal">
-                                        <i class="fa fa-user-o">迁出</i>
+                                        <i class="fa fa-user-o">Duyệt</i>
                                     </button>
                                 </div>
                             </td>
@@ -80,8 +80,8 @@
                     </tbody>
                 </table>
 
-                <!-- 迁出模态框示例（Modal） -->
-                <form method="post" action="/moveout?method=moveout"
+                <!-- approve -->
+                <form method="post" action="${pageContext.request.contextPath}/moveout?method=moveout"
                       class="form-horizontal" style="margin-top: 0px" role="form"
                       id="form_data" style="margin: 20px;">
 
@@ -92,14 +92,14 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">用户信息</h4>
+                                    <h4 class="modal-title" id="myModalLabel"></h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form">
 
                                         <div class="form-group">
                                             <div class="col-sm-9">
-                                                <h3 class="col-sm-18 control-label" id="deleteLabel">删除信息</h3>
+                                                <h3 class="col-sm-18 control-label" id="deleteLabel"></h3>
                                                 <input type="hidden" class="form-control" id="tab"
                                                        name="tab" placeholder="" value="dor_admin"> <input
                                                     type="hidden" class="form-control" id="id"
@@ -110,18 +110,17 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="user_id" class="col-sm-3 control-label">迁出原因</label>
+                                            <label for="user_id" class="col-sm-3 control-label">Lý do rời</label>
                                             <div class="col-sm-9">
-                                                <input type="text" required class="form-control"
-                                                       name="reason">
+                                                <input type="text" required class="form-control" name="reason">
                                             </div>
                                         </div>
 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn btn-danger">迁出</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-danger">Duyệt</button>
                                     <span id="tip"> </span>
                                 </div>
                             </div>
@@ -141,8 +140,8 @@
         var id = button.data('id')
         var dormitoryId = button.data('dormitory-id')
         var modal = $(this)
-        modal.find('.modal-title').text('学生迁出登记')
-        modal.find('#deleteLabel').text('将迁出学号为  ' + id + ' 的学生')
+        modal.find('.modal-title').text('Duyệt yêu cầu rời')
+        modal.find('#deleteLabel').text('Duyệt ' + id + ' ?')
         modal.find('#id').val(id)
         modal.find('#dormitoryId').val(dormitoryId)
     })

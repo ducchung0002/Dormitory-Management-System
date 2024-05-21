@@ -56,6 +56,7 @@
                         <th>Tên</th>
                         <th>Mô tả</th>
                         <th>Quản trị viên</th>
+                        <th>Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
