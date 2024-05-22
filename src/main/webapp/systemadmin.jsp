@@ -86,6 +86,17 @@
             						</span>Sinh viên đã rời đi
             </a>
 
+            <a href="javascript:void(0)" class="list-group-item" onclick="change('/fee?method=display',8)">
+                        						<span class="" aria-hidden="true">
+                        							<i class="fa fa-bookmark-o fa-fw"></i>
+                        						</span>Thu phí
+                        </a>
+           <a href="javascript:void(0)" class="list-group-item" onclick="change('/fee?method=all',9)">
+                                   						<span class="" aria-hidden="true">
+                                   							<i class="fa fa-bookmark-o fa-fw"></i>
+                                   						</span>Thông tin nộp phi
+            </a>
+
         </div>
         <!--page content -->
         <iframe style="width: 81%; height: 600px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
