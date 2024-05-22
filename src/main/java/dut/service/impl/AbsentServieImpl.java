@@ -24,7 +24,7 @@ public class AbsentServieImpl implements AbsentService {
 
     @Override
     public List<Absent> search(String key, String value) {
-        if(value.equals("")) return this.absentDao.list();
+        if(value.isEmpty()) return this.absentDao.list();
         return this.absentDao.search(key, value);
     }
 }

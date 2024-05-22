@@ -67,7 +67,7 @@
             <a href="javascript:void(0)" class="list-group-item" onclick="change('/moveout?method=list',4)">
 						<span class="" aria-hidden="true">
 							<i class="fa fa-address-card-o fa-fw"></i>
-						</span>Đăng ký chuyển đi của sinh viên
+						</span>Chuyển đi sinh viên
             </a>
             <a href="javascript:void(0)" class="list-group-item" onclick="change('/moveout?method=record',5)">
 						<span class="" aria-hidden="true">

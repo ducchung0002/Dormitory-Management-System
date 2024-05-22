@@ -56,7 +56,7 @@ public class BuildingServiceImpl implements BuildingService {
             Integer delete = this.dormitoryDao.deleteById(dormitoryId);
             if(delete != 1) throw new RuntimeException("Error");
         }
-        //删除楼宇
+        // Delete building
         Integer delete = this.buildingDao.delete(id);
         if(delete != 1) throw new RuntimeException("Error");
     }
