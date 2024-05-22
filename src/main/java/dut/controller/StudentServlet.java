@@ -37,6 +37,11 @@ public class StudentServlet extends HttpServlet {
                 req.setAttribute("dormitoryList", this.dormitoryService.availableList());
                 req.getRequestDispatcher(req.getContextPath() + "studentmanager.jsp").forward(req, resp);
                 break;
+            case "list_moved":
+                req.setAttribute("list", this.studentService.listMoved());
+                req.setAttribute("dormitoryList", this.dormitoryService.availableList());
+                req.getRequestDispatcher(req.getContextPath() + "studentmovedmanager.jsp").forward(req, resp);
+                break;
             case "search":
                 String key = req.getParameter("key");
                 String value = req.getParameter("value");
@@ -64,6 +69,17 @@ public class StudentServlet extends HttpServlet {
                 String oldDormitoryIdStr = req.getParameter("oldDormitoryId");
                 Integer oldDormitoryId = Integer.parseInt(oldDormitoryIdStr);
                 this.studentService.update(new Student(id, number, name, gender, dormitoryId),oldDormitoryId);
+                resp.sendRedirect("/student?method=list");
+                break;
+            case "movein":
+                idStr = req.getParameter("id");
+                id = Integer.parseInt(idStr);
+                String dormitoryIdStr2 = req.getParameter("dormitoryId");
+                dormitoryId = Integer.parseInt(dormitoryIdStr2);
+                number = req.getParameter("number");
+                name = req.getParameter("name");
+                gender = req.getParameter("gender");
+                this.studentService.movein(new Student(id, number, name, gender, dormitoryId));
                 resp.sendRedirect("/student?method=list");
                 break;
             case "delete":

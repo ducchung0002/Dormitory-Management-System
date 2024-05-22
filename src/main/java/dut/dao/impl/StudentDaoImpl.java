@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StudentDaoImpl implements StudentDao {
@@ -16,6 +18,35 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> list() {
         Connection connection = JDBCUtil.getConnection();
         String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state,s.create_date from student s,dormitory d where s.dormitory_id = d.id";
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Student> list = new ArrayList<>();
+        try {
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String number = resultSet.getString(2);
+                String name = resultSet.getString(3);
+                String gender = resultSet.getString(4);
+                Integer dormitoryId = resultSet.getInt(5);
+                String dormitoryName = resultSet.getString(6);
+                String state = resultSet.getString(7);
+                String createDate = resultSet.getString(8);
+                list.add(new Student(id, number, name, gender, dormitoryId, dormitoryName, state, createDate));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBCUtil.release(connection, statement, resultSet);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Student> listMoved() {
+        Connection connection = JDBCUtil.getConnection();
+        String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state,s.create_date from student s,dormitory d where s.dormitory_id = d.id and s.state = 'rời đi'";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<Student> list = new ArrayList<>();
@@ -106,6 +137,29 @@ public class StudentDaoImpl implements StudentDao {
             statement.setString(3, student.getGender());
             statement.setInt(4, student.getDormitoryId());
             statement.setInt(5, student.getId());
+            result = statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            JDBCUtil.release(connection, statement, null);
+        }
+        return result;
+    }
+
+    @Override
+    public Integer movein(Student student) {
+        Connection connection = JDBCUtil.getConnection();
+        String sql = "update student set number = ?,name = ?,gender = ?, dormitory_id = ?, state = 'đang ở', create_date = ? where id = ?";
+        PreparedStatement statement = null;
+        Integer result = null;
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, student.getNumber());
+            statement.setString(2, student.getName());
+            statement.setString(3, student.getGender());
+            statement.setInt(4, student.getDormitoryId());
+            statement.setString(5, student.getCreateDate());
+            statement.setInt(6, student.getId());
             result = statement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

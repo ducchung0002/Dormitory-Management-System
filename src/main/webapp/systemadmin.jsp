@@ -80,6 +80,12 @@
 						</span>Bản ghi sinh viên vắng mặt
             </a>
 
+            <a href="javascript:void(0)" class="list-group-item" onclick="change('/student?method=list_moved',7)">
+            						<span class="" aria-hidden="true">
+            							<i class="fa fa-bookmark-o fa-fw"></i>
+            						</span>Sinh viên đã rời đi
+            </a>
+
         </div>
         <!--page content -->
         <iframe style="width: 81%; height: 600px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>

@@ -22,6 +22,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Student> listMoved() {
+        return this.studentDao.listMoved();
+    }
+
+    @Override
     public List<Student> search(String key, String value) {
         if(value.isEmpty()) return this.studentDao.list();
         return this.studentDao.search(key, value);
@@ -44,6 +49,16 @@ public class StudentServiceImpl implements StudentService {
         Integer dormitory1 = this.dormitoryDao.addAvailable(oldDormitoryId);
         Integer dormitory2 = this.dormitoryDao.subAvailable(student.getDormitoryId());
         if(update != 1 || dormitory1 != 1 || dormitory2 != 1) throw new RuntimeException("Error");
+    }
+
+    @Override
+    public void movein(Student student) {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        student.setCreateDate(simpleDateFormat.format(date));
+        Integer save = this.studentDao.movein(student);
+        Integer sub = this.dormitoryDao.subAvailable(student.getDormitoryId());
+        if(save != 1 || sub != 1) throw new RuntimeException("Error");
     }
 
     @Override
