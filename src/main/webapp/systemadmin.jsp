@@ -82,7 +82,7 @@
 
         </div>
         <!--page content -->
-        <iframe style="width: 81%; height: 850px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
+        <iframe style="width: 81%; height: 400px; border: 0;" src="${pageContext.request.contextPath}/dormitoryAdmin?method=list"></iframe>
     </div>
 </div>
 

@@ -175,7 +175,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> moveoutList() {
         Connection connection = JDBCUtil.getConnection();
-        String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state from student s,dormitory d where s.dormitory_id = d.id and s.state = '入住'";
+        String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state from student s,dormitory d where s.dormitory_id = d.id and s.state = 'đang ở'";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<Student> list = new ArrayList<>();
@@ -231,7 +231,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public Integer updateStateById(Integer id) {
         Connection connection = JDBCUtil.getConnection();
-        String sql = "update student set state = '迁出' where id = "+id;
+        String sql = "update student set state = 'rời đi' where id = "+id;
         PreparedStatement statement = null;
         Integer result = null;
         try {

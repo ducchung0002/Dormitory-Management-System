@@ -91,7 +91,7 @@
                                     <button type="button" class="btn btn-danger "
                                             data-id="${student.id}"
                                             data-dormitory-id="${student.dormitoryId}"
-                                            data-number="${student.number}"
+                                            data-name="${student.name}"
                                             data-toggle="modal"
                                             onclick="" data-target="#delUserModal">
                                         <i class="fa fa-user-times">Xoá</i>

@@ -40,17 +40,17 @@ public class AccountServlet extends HttpServlet {
                         switch (systemAdminDto.getCode()){
                             case -1: // -1: username not found
                                 req.setAttribute("usernameError", "Tài khoản không tồn tại");
-                                req.getRequestDispatcher( req.getContextPath() + "login.jsp").forward(req, resp);
+                                req.getRequestDispatcher( req.getContextPath() + "/login.jsp").forward(req, resp);
                                 break;
                             case -2: // -2: password incorrect
                                 req.setAttribute("passwordError", "Mật khẩu không chính xác");
-                                req.getRequestDispatcher(req.getContextPath() + "login.jsp").forward(req, resp);
+                                req.getRequestDispatcher(req.getContextPath() + "/login.jsp").forward(req, resp);
                                 break;
                             case 0: // 0: login success
                                 // Redirect to login success UI
                                 HttpSession session = req.getSession();
                                 session.setAttribute("systemAdmin", systemAdminDto.getSystemAdmin());
-                                resp.sendRedirect(req.getContextPath() + "systemadmin.jsp");
+                                resp.sendRedirect(req.getContextPath() + "/systemadmin.jsp");
                                 break;
                         }
                         break;
@@ -59,17 +59,17 @@ public class AccountServlet extends HttpServlet {
                         switch (dormitoryAdminDto.getCode()){
                             case -1:
                                 req.setAttribute("usernameError", "Tài khoản không tồn tại");
-                                req.getRequestDispatcher(req.getContextPath() + "login.jsp").forward(req, resp);
+                                req.getRequestDispatcher(req.getContextPath() + "/login.jsp").forward(req, resp);
                                 break;
                             case -2:
                                 req.setAttribute("passwordError", "Mật khẩu không chính xác");
-                                req.getRequestDispatcher(req.getContextPath() + "login.jsp").forward(req, resp);
+                                req.getRequestDispatcher(req.getContextPath() + "/login.jsp").forward(req, resp);
                                 break;
                             case 0:
                                 // Redirect to login success UI
                                 HttpSession session = req.getSession();
                                 session.setAttribute("dormitoryAdmin", dormitoryAdminDto.getDormitoryAdmin());
-                                resp.sendRedirect(req.getContextPath() + "dormitoryadmin.jsp");
+                                resp.sendRedirect(req.getContextPath() + "/dormitoryadmin.jsp");
                                 break;
                         }
                         break;
@@ -77,7 +77,7 @@ public class AccountServlet extends HttpServlet {
                 break;
             case "logout":
                 req.getSession().invalidate();
-                resp.sendRedirect(req.getContextPath() + "login.jsp");
+                resp.sendRedirect(req.getContextPath() + "/login.jsp");
                 break;
         }
 

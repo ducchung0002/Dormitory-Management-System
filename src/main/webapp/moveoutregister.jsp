@@ -69,9 +69,10 @@
                                     <button type="button" class="btn btn-danger"
                                             data-id="${student.id}"
                                             data-dormitory-id="${student.dormitoryId}"
+                                            data-name="${student.name}"
                                             data-toggle="modal"
                                             data-target="#delUserModal">
-                                        <i class="fa fa-user-o">Duyệt</i>
+                                        <i class="fa fa-user-o">Chuyển đi</i>
                                     </button>
                                 </div>
                             </td>
@@ -120,7 +121,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-danger">Duyệt</button>
+                                    <button type="submit" class="btn btn-danger">Chuyển đi</button>
                                     <span id="tip"> </span>
                                 </div>
                             </div>
@@ -139,9 +140,10 @@
         var button = $(event.relatedTarget)
         var id = button.data('id')
         var dormitoryId = button.data('dormitory-id')
+        var name = button.data('name')
         var modal = $(this)
-        modal.find('.modal-title').text('Duyệt yêu cầu rời')
-        modal.find('#deleteLabel').text('Duyệt ' + id + ' ?')
+        modal.find('.modal-title').text('Chuyển sinh viên')
+        modal.find('#deleteLabel').text('Chuyển sinh viên ' + name + '?')
         modal.find('#id').val(id)
         modal.find('#dormitoryId').val(dormitoryId)
     })

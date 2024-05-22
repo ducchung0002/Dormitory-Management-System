@@ -44,7 +44,7 @@ public class AbsentServlet extends HttpServlet {
                 req.setAttribute("buildingList", buildingList);
                 req.setAttribute("dormitoryList", dormitoryList);
                 req.setAttribute("studentList",studentList);
-                req.getRequestDispatcher("absentregister.jsp").forward(req, resp);
+                req.getRequestDispatcher( "absentregister.jsp").forward(req, resp);
                 break;
             case "save":
                 String buildingIdStr = req.getParameter("buildingId");

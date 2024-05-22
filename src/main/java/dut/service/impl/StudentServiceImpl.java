@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void save(Student student) {
-        student.setState("入住");
+        student.setState("đang ở");
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         student.setCreateDate(simpleDateFormat.format(date));
@@ -41,7 +41,6 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void update(Student student,Integer oldDormitoryId) {
         Integer update = this.studentDao.update(student);
-        //原宿舍available+1，新宿舍available-1
         Integer dormitory1 = this.dormitoryDao.addAvailable(oldDormitoryId);
         Integer dormitory2 = this.dormitoryDao.subAvailable(student.getDormitoryId());
         if(update != 1 || dormitory1 != 1 || dormitory2 != 1) throw new RuntimeException("Error");
