@@ -203,7 +203,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> searchForMoveout(String key, String value) {
         Connection connection = JDBCUtil.getConnection();
-        String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state from student s,dormitory d where s.dormitory_id = d.id and s.state = '入住' and s."+key+" like '%"+value+"%'";
+        String sql = "select s.id,s.number,s.name,s.gender,s.dormitory_id,d.name,s.state from student s,dormitory d where s.dormitory_id = d.id and s.state = 'đang ở' and s."+key+" like '%"+value+"%'";
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         List<Student> list = new ArrayList<>();
